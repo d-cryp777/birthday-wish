@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Birthday Debbie! 🎂💖</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at 20% 20%, #ff7eb3 0%, transparent 35%),
+        radial-gradient(circle at 80% 30%, #a16eff 0%, transparent 40%),
+        radial-gradient(circle at 50% 90%, #ff8c6b 0%, transparent 40%),
+        linear-gradient(135deg, #1d0b36, #3b1053, #7a1f5c);
+    }
+
+    /* ---------------- FLOATING BACKGROUND ---------------- */
+
+    .background-elements {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -100px;
+      animation: floatHeart linear infinite;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 10px rgba(255, 100, 170, 0.7));
+    }
+
+    @keyframes floatHeart {
+      from {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+      }
+
+      to {
+        transform: translateY(-115vh) rotate(360deg) scale(1.2);
+      }
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -180px;
+      width: 75px;
+      height: 95px;
+      border-radius: 50%;
+      animation: floatBalloon linear infinite;
+      box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .balloon::before {
+      content: "";
+      position: absolute;
+      bottom: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 12px solid currentColor;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.7);
+      top: 95px;
+      left: 50%;
+    }
+
+    @keyframes floatBalloon {
+      from {
+        transform: translateY(0) rotate(-5deg);
+      }
+
+      to {
+        transform: translateY(-125vh) rotate(10deg);
+      }
+    }
+
+    /* ---------------- MAIN CONTAINER ---------------- */
+
+    .page {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 15px;
+    }
+
+    .birthday-card {
+      width: 100%;
+      max-width: 850px;
+      text-align: center;
+      padding: 50px 45px;
+      border-radius: 35px;
+
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.4),
+        inset 0 0 30px rgba(255, 255, 255, 0.05);
+
+      animation: cardAppear 1.3s ease;
+    }
+
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ---------------- TOP DECORATION ---------------- */
+
+    .sparkles {
+      font-size: 1.8rem;
+      letter-spacing: 12px;
+      margin-bottom: 10px;
+      animation: sparkle 1.5s infinite alternate;
+    }
+
+    @keyframes sparkle {
+      from {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+
+      to {
+        transform: scale(1.15);
+        opacity: 1;
+      }
+    }
+
+    .small-message {
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-bottom: 15px;
+    }
+
+    /* ---------------- TITLE ---------------- */
+
+    h1 {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: normal;
+      line-height: 1;
+      margin-bottom: 10px;
+
+      color: #fff;
+
+      text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.7),
+        0 0 25px rgba(255, 111, 180, 0.7);
+    }
+
+    .debbie {
+      display: inline-block;
+      color: #ffd1e8;
+
+      animation: nameGlow 2s infinite alternate;
+    }
+
+    @keyframes nameGlow {
+      from {
+        transform: scale(1);
+        text-shadow:
+          0 0 10px #ff9fce,
+          0 0 20px #ff65ad;
+      }
+
+      to {
+        transform: scale(1.05);
+        text-shadow:
+          0 0 20px #fff,
+          0 0 40px #ff4fa3,
+          0 0 70px #ff80c0;
+      }
+    }
+
+    .birthday-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      margin: 20px auto 30px;
+      max-width: 600px;
+      line-height: 1.8;
+      opacity: 0.95;
+    }
+
+    /* ---------------- CAKE ---------------- */
+
+    .cake-container {
+      position: relative;
+      margin: 25px auto 35px;
+      display: inline-block;
+    }
+
+    .cake {
+      font-size: clamp(5rem, 12vw, 8rem);
+      display: inline-block;
+
+      animation: cakeDance 2s infinite ease-in-out;
+
+      filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.3));
+    }
+
+    @keyframes cakeDance {
+      0%, 100% {
+        transform: rotate(-4deg) translateY(0);
+      }
+
+      50% {
+        transform: rotate(4deg) translateY(-15px);
+      }
+    }
+
+    .cake-glow {
+      position: absolute;
+      width: 120%;
+      height: 60%;
+      left: -10%;
+      bottom: -10px;
+      background: radial-gradient(
+        ellipse,
+        rgba(255, 214, 95, 0.4),
+        transparent 70%
+      );
+      filter: blur(15px);
+      z-index: -1;
+    }
+
+    /* ---------------- MESSAGE ---------------- */
+
+    .message-box {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 25px;
+      padding: 25px;
+      margin: 10px auto 30px;
+      max-width: 700px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .message-box p {
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      line-height: 1.9;
+    }
+
+    .highlight {
+      color: #ffd1e8;
+      font-weight: 600;
+    }
+
+    /* ---------------- BUTTON ---------------- */
+
+    .surprise-btn {
+      border: none;
+      padding: 17px 35px;
+      border-radius: 50px;
+
+      font-family: "Poppins", sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+
+      cursor: pointer;
+      color: white;
+
+      background: linear-gradient(135deg, #ff4f9a, #a84dff);
+
+      box-shadow:
+        0 10px 30px rgba(255, 56, 150, 0.35),
+        0 0 0 0 rgba(255, 100, 180, 0.6);
+
+      transition: 0.3s;
+
+      animation: buttonPulse 2s infinite;
+    }
+
+    @keyframes buttonPulse {
+      0% {
+        box-shadow:
+          0 10px 30px rgba(255, 56, 150, 0.35),
+          0 0 0 0 rgba(255, 100, 180, 0.6);
+      }
+
+      70% {
+        box-shadow:
+          0 10px 30px rgba(255, 56, 150, 0.35),
+          0 0 0 18px rgba(255, 100, 180, 0);
+      }
+
+      100% {
+        box-shadow:
+          0 10px 30px rgba(255, 56, 150, 0.35),
+          0 0 0 0 rgba(255, 100, 180, 0);
+      }
+    }
+
+    .surprise-btn:hover {
+      transform: translateY(-4px) scale(1.04);
+    }
+
+    .surprise-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* ---------------- SURPRISE ---------------- */
+
+    .surprise-content {
+      display: none;
+      margin-top: 35px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+      animation: reveal 1s ease forwards;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .surprise-content h2 {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: #ffd1e8;
+      margin-bottom: 15px;
+    }
+
+    .surprise-content p {
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.9;
+      font-size: 1.05rem;
+    }
+
+    .big-emojis {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      margin-top: 20px;
+      letter-spacing: 8px;
+      animation: emojiBounce 1.5s infinite alternate;
+    }
+
+    @keyframes emojiBounce {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-12px);
+      }
+    }
+
+    /* ---------------- FOOTER ---------------- */
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.85rem;
+      opacity: 0.65;
+    }
+
+    /* ---------------- MOBILE ---------------- */
+
+    @media (max-width: 600px) {
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .page {
+        padding: 20px 12px;
+      }
+
+      .birthday-card {
+        padding: 40px 20px;
+        border-radius: 25px;
+      }
+
+      .small-message {
+        letter-spacing: 3px;
+        font-size: 0.65rem;
+      }
+
+      .sparkles {
+        letter-spacing: 6px;
+        font-size: 1.3rem;
+      }
+
+      .message-box {
+        padding: 20px 15px;
+      }
+
+      .surprise-btn {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .balloon {
+        transform: scale(0.7);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Background animations -->
+  <div class="background-elements">
+
+    <!-- Hearts -->
+    <div class="heart" style="left: 8%; font-size: 35px; animation-duration: 9s;">💖</div>
+    <div class="heart" style="left: 20%; font-size: 25px; animation-duration: 12s; animation-delay: 2s;">💕</div>
+    <div class="heart" style="left: 35%; font-size: 40px; animation-duration: 14s; animation-delay: 4s;">💗</div>
+    <div class="heart" style="left: 70%; font-size: 30px; animation-duration: 10s; animation-delay: 1s;">💓</div>
+    <div class="heart" style="left: 88%; font-size: 40px; animation-duration: 13s; animation-delay: 3s;">💞</div>
+
+    <!-- Balloons -->
+    <div class="balloon"
+      style="left: 3%; background: #ff4f9a; color: #ff4f9a; animation-duration: 13s;">
+    </div>
+
+    <div class="balloon"
+      style="left: 15%; background: #ffd45c; color: #ffd45c; animation-duration: 16s; animation-delay: 3s;">
+    </div>
+
+    <div class="balloon"
+      style="left: 78%; background: #8c5cff; color: #8c5cff; animation-duration: 14s; animation-delay: 1s;">
+    </div>
+
+    <div class="balloon"
+      style="left: 92%; background: #ff6b6b; color: #ff6b6b; animation-duration: 17s; animation-delay: 5s;">
+    </div>
+
+  </div>
+
+
+  <!-- Main content -->
+
+  <div class="page">
+
+    <main class="birthday-card">
+
+      <div class="sparkles">✨ ✨ ✨</div>
+
+      <div class="small-message">
+        Today is all about celebrating someone special
+      </div>
+
+      <h1>
+        Happy Birthday<br>
+        <span class="debbie">Debbie</span>! 🎉
+      </h1>
+
+      <p class="birthday-subtitle">
+        Another beautiful year. Another chapter. And hopefully,
+        a whole lot more reasons to smile. 💕
+      </p>
+
+
+      <!-- Cake -->
+
+      <div class="cake-container">
+        <div class="cake-glow"></div>
+        <div class="cake">🎂</div>
+      </div>
+
+
+      <!-- Main message -->
+
+      <div class="message-box">
+
+        <p>
+          Today isn't just about getting older —
+          it's about celebrating <span class="highlight">you</span>.
+          Your smile, your energy, your memories,
+          and all the wonderful moments you bring into the lives
+          of the people around you. ✨
+        </p>
+
+      </div>
+
+
+      <!-- Button -->
+
+      <button class="surprise-btn" onclick="openSurprise()">
+        Open Your Birthday Surprise 🎁
+      </button>
+
+
+      <!-- Hidden surprise -->
+
+      <section class="surprise-content" id="surprise">
+
+        <h2>For Debbie 💖</h2>
+
+        <p>
+          May this new year of your life bring you unforgettable
+          adventures, unexpected happiness, beautiful memories,
+          success in everything you chase, and people who make
+          every moment feel special.
+          <br><br>
+          Never forget how incredible, unique, and wonderful you are.
+          Keep shining, keep smiling, and keep being
+          <span class="highlight">the amazing Debbie that you are!</span>
+        </p>
+
+        <div class="big-emojis">
+          🎂 🥳 🎈 💖 🎉
+        </div>
+
+      </section>
+
+
+      <div class="footer">
+        Made with lots of good wishes and birthday magic ✨
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- Confetti library -->
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+  <script>
+
+    // Opening celebration
+
+    window.addEventListener("load", () => {
+
+      setTimeout(() => {
+
+        confetti({
+          particleCount: 180,
+          spread: 120,
+          origin: {
+            y: 0.6
+          }
+        });
+
+      }, 600);
+
+    });
+
+
+    // Random celebration confetti
+
+    setInterval(() => {
+
+      confetti({
+        particleCount: 35,
+        spread: 70,
+        startVelocity: 25,
+        origin: {
+          x: Math.random(),
+          y: 0.7
+        }
+      });
+
+    }, 4000);
+
+
+    // Surprise function
+
+    function openSurprise() {
+
+      const surprise = document.getElementById("surprise");
+
+      surprise.style.display = "block";
+
+
+      // Scroll to surprise smoothly
+
+      setTimeout(() => {
+
+        surprise.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+      }, 100);
+
+
+      // Massive confetti celebration
+
+      const duration = 3500;
+      const end = Date.now() + duration;
+
+
+      const interval = setInterval(() => {
+
+        if (Date.now() > end) {
+          clearInterval(interval);
+          return;
+        }
+
+
+        confetti({
+          particleCount: 60,
+          angle: 60,
+          spread: 70,
+          origin: {
+            x: 0
+          }
+        });
+
+
+        confetti({
+          particleCount: 60,
+          angle: 120,
+          spread: 70,
+          origin: {
+            x: 1
+          }
+        });
+
+
+      }, 300);
+
+    }
+
+  </script>
+
+</body>
+</html>
